@@ -35,7 +35,7 @@ Open your terminal and run the following commands to compile the executables:
 g++ -std=c++11 seed.cpp utils.cpp -o seed -pthread
 ```
 
-**Compile the Seed Node:**
+**Compile the Peer Node:**
 ```bash
 g++ -std=c++11 peer.cpp utils.cpp -o peer -pthread
 ```
