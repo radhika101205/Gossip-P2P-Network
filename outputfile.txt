@@ -1,0 +1,29 @@
+[LOG] Consensus outcome: Added 127.0.0.1:8080 to PL.
+[LOG] Received Peer List from seed: 127.0.0.1:8080
+[LOG] Peer is now listening for gossip on port 8080
+[LOG] Consensus outcome: Added 127.0.0.1:8081 to PL.
+[LOG] Received Peer List from seed: 127.0.0.1:8080,127.0.0.1:8081
+[LOG] Added neighbor: 127.0.0.1:8080
+[LOG] Peer is now listening for gossip on port 8081
+[GOSSIP RECEIVED - NEW] 1772128027:127.0.0.1:1
+[GOSSIP RECEIVED - NEW] 1772128032:127.0.0.1:2
+[GOSSIP RECEIVED - NEW] 1772128037:127.0.0.1:3
+[LOG] Consensus outcome: Added 127.0.0.1:8080 to PL.
+[LOG] Received Peer List from seed: 127.0.0.1:8080
+[LOG] Consensus outcome: Added 127.0.0.1:8080 to PL.
+[LOG] Received Peer List from seed: 127.0.0.1:8080
+[LOG] Peer is now listening for gossip on port 8080
+[LOG] Consensus outcome: Added 127.0.0.1:8081 to PL.
+[LOG] Received Peer List from seed: 127.0.0.1:8080,127.0.0.1:8081
+[LOG] Added neighbor: 127.0.0.1:8080
+[LOG] Consensus outcome: Added 127.0.0.1:8081 to PL.
+[LOG] Received Peer List from seed: 127.0.0.1:8080,127.0.0.1:8081
+[LOG] Added neighbor: 127.0.0.1:8080
+[LOG] Peer is now listening for gossip on port 8081
+[GOSSIP RECEIVED - NEW] 1772128074:127.0.0.1:1
+[GOSSIP RECEIVED - NEW] 1772128079:127.0.0.1:2
+[GOSSIP RECEIVED - NEW] 1772128084:127.0.0.1:3
+[GOSSIP RECEIVED - NEW] 1772128089:127.0.0.1:4
+[LIVENESS] Neighbor 127.0.0.1:8080 is un-responsive! Suspecting dead.
+[LOG] Consensus outcome: Removed dead node 127.0.0.1:8080 from PL.
+[LOG] Consensus outcome: Removed dead node 127.0.0.1:8080 from PL.

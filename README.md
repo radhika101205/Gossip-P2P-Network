@@ -40,16 +40,16 @@ g++ -std=c++11 seed.cpp utils.cpp -o seed -pthread
 g++ -std=c++11 peer.cpp utils.cpp -o peer -pthread
 ```
 ## Execution Instructions
-[cite_start]*Note: Ensure `config.txt` is present in the same directory before running.* [cite: 60]
+Note: Ensure `config.txt` is present in the same directory before running.* [cite: 60]
 
 **1. Start the Seed Nodes**
-[cite_start]Open separate terminal windows for each seed defined in your `config.txt` and start them by passing their assigned port:
+Open separate terminal windows for each seed defined in your `config.txt` and start them by passing their assigned port:
 ```bash
 ./seed 8000
 ./seed 8001
 ```
 **2. Start the Peer Nodes**
-[cite_start]Open separate terminal windows for each peer. Pass the peer's own IP address and a unique port number to start it:
+Open separate terminal windows for each peer. Pass the peer's own IP address and a unique port number to start it:
 ```bash
 ./peer 127.0.0.1 8080
 ./peer 127.0.0.1 8081
