@@ -24,23 +24,23 @@ This project implements a decentralized, gossip-based Peer-to-Peer (P2P) network
 
 ## Code Architecture
 
-[cite_start]The implementation follows a modular, multithreaded approach to ensure high availability and non-blocking operations. [cite: 10, 11]
+The implementation follows a modular, multithreaded approach to ensure high availability and non-blocking operations. 
 
 ### Seed Node (`seed.cpp`)
-* [cite_start]**`main()`**: Initializes the TCP server socket, binds to the specified port from the config, and enters an infinite `accept()` loop. [cite: 15, 23]
-* [cite_start]**`handlePeerConnection(int clientSocket)`**: A worker thread function that parses incoming messages. [cite: 18]
-    * [cite_start]**Registration**: Implements "Consensus-based registration" by adding peers to the Peer List (PL) and returning the current PL union to the requester. [cite: 16, 17, 18]
-    * [cite_start]**Dead Node Removal**: Implements "Consensus-based removal" by processing death reports and deleting the specified peer from the PL. [cite: 19, 20, 32]
+* **`main()`**: Initializes the TCP server socket, binds to the specified port from the config, and enters an infinite `accept()` loop. 
+* **`handlePeerConnection(int clientSocket)`**: A worker thread function that parses incoming messages.
+    * **Registration**: Implements "Consensus-based registration" by adding peers to the Peer List (PL) and returning the current PL union to the requester. 
+    * **Dead Node Removal**: Implements "Consensus-based removal" by processing death reports and deleting the specified peer from the PL. 
 
 ### Peer Node (`peer.cpp`)
-* [cite_start]**`main()`**: Bootstraps the peer by reading `config.txt`, randomly selecting seeds, and initiating the registration handshake. [cite: 5, 23, 24]
-* [cite_start]**`startPeerServer()`**: A background thread that listens for gossip messages from neighbors. [cite: 25] [cite_start]It maintains the **Message List (ML)** to prevent redundant forwarding. [cite: 26, 40, 41]
-* [cite_start]**`startGossiping()`**: A background thread that generates a unique message every 5 seconds (max 10) and broadcasts it to all neighbors. [cite: 35, 37, 39]
-* [cite_start]**`startLivenessDetection()`**: A background thread that periodically pings neighbors via TCP connection attempts. [cite: 27] [cite_start]If a neighbor fails to respond, it generates a `Dead Node` report for the seeds. [cite: 28, 29, 30]
+* **`main()`**: Bootstraps the peer by reading `config.txt`, randomly selecting seeds, and initiating the registration handshake. 
+* **`startPeerServer()`**: A background thread that listens for gossip messages from neighbors. It maintains the **Message List (ML)** to prevent redundant forwarding. 
+* **`startGossiping()`**: A background thread that generates a unique message every 5 seconds (max 10) and broadcasts it to all neighbors. 
+* **`startLivenessDetection()`**: A background thread that periodically pings neighbors via TCP connection attempts. If a neighbor fails to respond, it generates a `Dead Node` report for the seeds. 
 
 ### Shared Utilities (`utils.cpp`)
-* [cite_start]**`parseConfig()`**: Standardizes the reading of IP-Port pairs for seeds. [cite: 5, 23]
-* [cite_start]**`logToFile()`**: Ensures all required logs (registrations, gossip, and removals) are persisted to `outputfile.txt`. [cite: 45, 46]
+* **`parseConfig()`**: Standardizes the reading of IP-Port pairs for seeds. 
+* **`logToFile()`**: Ensures all required logs (registrations, gossip, and removals) are persisted to `outputfile.txt`. 
 
 ## Prerequisites
 * A Linux/macOS environment (or WSL on Windows).
@@ -60,7 +60,7 @@ g++ -std=c++11 seed.cpp utils.cpp -o seed -pthread
 g++ -std=c++11 peer.cpp utils.cpp -o peer -pthread
 ```
 ## Execution Instructions
-Note: Ensure `config.txt` is present in the same directory before running.* [cite: 60]
+Note: Ensure `config.txt` is present in the same directory before running.* 
 
 **1. Start the Seed Nodes**
 Open separate terminal windows for each seed defined in your `config.txt` and start them by passing their assigned port:
