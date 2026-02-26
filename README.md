@@ -22,6 +22,26 @@ This project implements a decentralized, gossip-based Peer-to-Peer (P2P) network
 * `config.txt` - Configuration file containing the IP and Port pairs of the available Seed nodes.
 * `outputfile.txt` - Dynamically generated file containing the required network event logs.
 
+## Code Architecture
+
+[cite_start]The implementation follows a modular, multithreaded approach to ensure high availability and non-blocking operations. [cite: 10, 11]
+
+### Seed Node (`seed.cpp`)
+* [cite_start]**`main()`**: Initializes the TCP server socket, binds to the specified port from the config, and enters an infinite `accept()` loop. [cite: 15, 23]
+* [cite_start]**`handlePeerConnection(int clientSocket)`**: A worker thread function that parses incoming messages. [cite: 18]
+    * [cite_start]**Registration**: Implements "Consensus-based registration" by adding peers to the Peer List (PL) and returning the current PL union to the requester. [cite: 16, 17, 18]
+    * [cite_start]**Dead Node Removal**: Implements "Consensus-based removal" by processing death reports and deleting the specified peer from the PL. [cite: 19, 20, 32]
+
+### Peer Node (`peer.cpp`)
+* [cite_start]**`main()`**: Bootstraps the peer by reading `config.txt`, randomly selecting seeds, and initiating the registration handshake. [cite: 5, 23, 24]
+* [cite_start]**`startPeerServer()`**: A background thread that listens for gossip messages from neighbors. [cite: 25] [cite_start]It maintains the **Message List (ML)** to prevent redundant forwarding. [cite: 26, 40, 41]
+* [cite_start]**`startGossiping()`**: A background thread that generates a unique message every 5 seconds (max 10) and broadcasts it to all neighbors. [cite: 35, 37, 39]
+* [cite_start]**`startLivenessDetection()`**: A background thread that periodically pings neighbors via TCP connection attempts. [cite: 27] [cite_start]If a neighbor fails to respond, it generates a `Dead Node` report for the seeds. [cite: 28, 29, 30]
+
+### Shared Utilities (`utils.cpp`)
+* [cite_start]**`parseConfig()`**: Standardizes the reading of IP-Port pairs for seeds. [cite: 5, 23]
+* [cite_start]**`logToFile()`**: Ensures all required logs (registrations, gossip, and removals) are persisted to `outputfile.txt`. [cite: 45, 46]
+
 ## Prerequisites
 * A Linux/macOS environment (or WSL on Windows).
 * GCC compiler with C++11 support.
