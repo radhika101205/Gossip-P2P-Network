@@ -78,3 +78,25 @@ Open separate terminal windows for each peer. Pass the peer's own IP address and
 **3. Simulating a Node Failure**
 To test the liveness detection and consensus removal, forcefully terminate one of the running Peer terminals using `Ctrl+C`. Within 10 seconds, the neighboring peers will detect the unresponsiveness, log a `[LIVENESS]` warning, and instruct the seeds to remove the dead node from the official network list.
 
+## Test Results
+
+### Seed1 terminal
+
+![](outputs/Screenshot%20from%202026-04-15%2001-01-21.png)
+
+### Seed2 terminal
+
+![](outputs/Screenshot%20from%202026-04-15%2001-01-26.png)
+
+### Peer1 terminal
+
+![](outputs/Screenshot%20from%202026-04-15%2001-01-54.png)
+
+### Peer2 terminal
+
+![](outputs/Screenshot%20from%202026-04-15%2001-02-02.png)
+
+### Peer3 terminal
+
+![](outputs/Screenshot%20from%202026-04-15%2001-02-17.png)
+
